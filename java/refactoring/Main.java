@@ -24,7 +24,7 @@ abstract class Car implements Moveable, Stopable, Openable, Startable {
     private String color;
     private String name;
 
-    public Car(Engine engine, String color, String name) {
+    protected Car(Engine engine, String color, String name) {
         this.engine = engine;
         this.color = color;
         this.name = name;

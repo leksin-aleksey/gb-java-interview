@@ -1,6 +1,6 @@
 package builder;
 
-public class PersonBuilder implements Human, HumanBuilder{
+public class PersonBuilder implements HumanBuilder{
     private final Person person;
 
     public PersonBuilder() {
@@ -8,43 +8,51 @@ public class PersonBuilder implements Human, HumanBuilder{
     }
 
     @Override
-    public void setFirstName(String firstName) {
+    public PersonBuilder setFirstName(String firstName) {
         person.setFirstName(firstName);
+        return this;
     }
 
     @Override
-    public void setLastName(String lastName) {
+    public PersonBuilder setLastName(String lastName) {
         person.setLastName(lastName);
+        return this;
     }
 
     @Override
-    public void setMiddleName(String middleName) {
+    public PersonBuilder setMiddleName(String middleName) {
         person.setMiddleName(middleName);
+        return this;
     }
 
     @Override
-    public void setCountry(String country) {
+    public PersonBuilder setCountry(String country) {
         person.setCountry(country);
+        return this;
     }
 
     @Override
-    public void setAddress(String address) {
+    public PersonBuilder setAddress(String address) {
         person.setAddress(address);
+        return this;
     }
 
     @Override
-    public void setPhone(String phone) {
+    public PersonBuilder setPhone(String phone) {
         person.setPhone(phone);
+        return this;
     }
 
     @Override
-    public void setAge(int age) {
+    public PersonBuilder setAge(int age) {
         person.setAge(age);
+        return this;
     }
 
     @Override
-    public void setGender(String gender) {
+    public PersonBuilder setGender(String gender) {
         person.setGender(gender);
+        return this;
     }
 
     @Override
