@@ -1,21 +1,21 @@
 package builder;
 
 public interface HumanBuilder {
-    PersonBuilder setFirstName(String firstName);
+    HumanBuilder setFirstName(String firstName);
 
-    PersonBuilder setLastName(String lastName);
+    HumanBuilder setLastName(String lastName);
 
-    PersonBuilder setMiddleName(String middleName);
+    HumanBuilder setMiddleName(String middleName);
 
-    PersonBuilder setCountry(String country);
+    HumanBuilder setCountry(String country);
 
-    PersonBuilder setAddress(String address);
+    HumanBuilder setAddress(String address);
 
-    PersonBuilder setPhone(String phone);
+    HumanBuilder setPhone(String phone);
 
-    PersonBuilder setAge(int age);
+    HumanBuilder setAge(int age);
 
-    PersonBuilder setGender(String gender);
+    HumanBuilder setGender(String gender);
 
     Human build();
 }
