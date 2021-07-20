@@ -6,17 +6,15 @@ public class Main {
     private final Runnable runnable2;
 
     public Main() {
+        Counter counter = new ThreadSafeCounter();
+
         runnable1 = () -> {
-            int i = 0;
-            while (i < 100){
-                Counter counter = ThreadSafeCounter.instance();
+            for (int i = 0; i < 100; i++){
                 System.out.println(String.format("(%d %d) increment: %d -> %d", counter.ops(), i++, counter.value(), counter.increment()));
             }
         };
         runnable2 = () -> {
-            int i = 0;
-            while (i < 100){
-                Counter counter = ThreadSafeCounter.instance();
+            for (int i = 0; i < 100; i++){
                 System.out.println(String.format("(%d %d) decrement: %d -> %d", counter.ops(), i++, counter.value(), counter.decrement()));
             }
         };

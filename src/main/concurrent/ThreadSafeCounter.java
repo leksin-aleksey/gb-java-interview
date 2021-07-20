@@ -6,33 +6,16 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 
 public class ThreadSafeCounter extends Counter{
-    private int counterValue;
-    private int operationCounter;
+    private volatile int counterValue;
+    private volatile int operationCounter;
 
-    private static final ReadWriteLock lock;
-    private static final Lock writeLock;
-    private static final Lock readLock;
+    private final Lock writeLock;
+    private final Lock readLock;
 
-    static {
-        lock = new ReentrantReadWriteLock();
+    public ThreadSafeCounter() {
+        ReadWriteLock lock = new ReentrantReadWriteLock();
         writeLock = lock.writeLock();
         readLock = lock.readLock();
-    }
-
-    private static ThreadSafeCounter counter;
-
-    private ThreadSafeCounter() {}
-
-    public static Counter instance() {
-        try {
-            writeLock.lock();
-            if (counter == null) {
-                counter = new ThreadSafeCounter();
-            }
-            return counter;
-        } finally {
-            writeLock.unlock();
-        }
     }
 
     @Override
