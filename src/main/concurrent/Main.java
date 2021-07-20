@@ -10,12 +10,12 @@ public class Main {
 
         runnable1 = () -> {
             for (int i = 0; i < 100; i++){
-                System.out.println(String.format("(%d %d) increment: %d -> %d", counter.ops(), i++, counter.value(), counter.increment()));
+                System.out.printf("(%d %d) increment: %d -> %d%n", counter.ops(), i++, counter.value(), counter.increment());
             }
         };
         runnable2 = () -> {
             for (int i = 0; i < 100; i++){
-                System.out.println(String.format("(%d %d) decrement: %d -> %d", counter.ops(), i++, counter.value(), counter.decrement()));
+                System.out.printf("(%d %d) decrement: %d -> %d%n", counter.ops(), i++, counter.value(), counter.decrement());
             }
         };
     }
