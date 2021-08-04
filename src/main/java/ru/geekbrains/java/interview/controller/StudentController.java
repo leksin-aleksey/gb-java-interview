@@ -2,8 +2,7 @@ package ru.geekbrains.java.interview.controller;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.java.interview.entity.StudentDto;
 import ru.geekbrains.java.interview.model.Student;
@@ -19,22 +18,24 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
-    @GetMapping(path = "all", produces = "application/json")
+    @GetMapping(path = "all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public Iterable<StudentDto> getAll(){
         return studentRepository.findAll();
     }
 
-    @PutMapping(value = "add", produces = "application/json")
+    @PutMapping(value = "add", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @ResponseBody
     public Student addStudent(@RequestBody Student student){
         StudentDto studentDto = new StudentDto(student);
         studentDto = studentRepository.save(studentDto);
         return new Student(studentDto);
     }
 
-    @PostMapping(value = "update", produces = "application/json")
+    @PostMapping(value = "update", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
     public Student updateStudent(@RequestBody Student student) throws NotFoundException{
         Long id = student.getId();
         if (id == null){
@@ -47,7 +48,7 @@ public class StudentController {
         return new Student(studentDto);
     }
 
-    @DeleteMapping(value = "delete/{id}", produces = "application/json")
+    @DeleteMapping(value = "delete/{id}")
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteStudent(@PathVariable long id) throws NotFoundException{
         try {

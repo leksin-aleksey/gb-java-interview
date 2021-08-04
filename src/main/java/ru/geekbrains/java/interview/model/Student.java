@@ -1,22 +1,23 @@
 package ru.geekbrains.java.interview.model;
 
-
 import lombok.Data;
+import lombok.NonNull;
 import ru.geekbrains.java.interview.entity.StudentDto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
 @Data
 public class Student {
     private Long id;
 
-    @NotNull
+    @NonNull
     @Size(min = 5, max = 30)
-    private String name;
+    private final String name;
 
-    @NotNull
-    private Integer age;
+    @NonNull
+    private final Integer age;
 
     public Student(@NotNull StudentDto studentDto){
         id = studentDto.getId();
